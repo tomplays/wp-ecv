@@ -1,0 +1,113 @@
+
+/*
+//call a loop of posts based on arguments
+// example array : 
+// all are "optionnal" (overide)
+
+$args = array(
+    'post_type' => 'post',
+    'posts_per_page' => 5,
+    // 'category__in' => [$cat->cat_ID],
+    // 'orderby' => 'date',
+    // 'order'   => 'DESC',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'people',
+            'field'    => 'slug',
+            'terms'    => 'bob',
+        ),
+    ),
+);
+$query = new WP_Query( $args );
+
+
+
+/*
+while (have_posts()) : the_post(); 
+if ($pages_sub = get_pages(['child_of' => $post->ID, 'post_type' => 'page', 'post_status' => 'publish'])) {
+    foreach ($pages_sub as $p) {
+        $content = apply_filters('the_content', $p->post_content);
+        $title = apply_filters('the_title', $p->post_title);
+        $item =  [
+            'title' => $title,
+            'url' => esc_url(get_permalink($p->ID)),
+        ];
+
+      
+    }
+}
+ endwhile; 
+*/
+
+
+/*
+function get_sticky_posts($limit, array $not_in = [])
+{
+    $sticky = get_option('sticky_posts');
+    $sticky = array_slice($sticky, 0, $limit);
+  //  $sticky = array_diff($sticky, $not_in);
+    $sticky_posts_args = [
+        'post_type' => 'post',
+        'post__in' => $sticky,
+        'ignore_sticky_posts' => 1,
+        'orderby' => 'date',
+        'order'   => 'DESC',
+    ];
+   // return new \WP_Query($sticky_posts_args);
+}
+*/
+
+/*
+
+function get_featured_post()
+{
+    $cat = get_category_by_slug('a-la-une');
+    return new \WP_Query([
+        'posts_per_page' => 1,
+        'category__in' => [$cat->cat_ID],
+    ]);
+}
+
+function get_important_post()
+{
+    $cat = get_category_by_slug('important');
+    return new WP_Query([
+        'posts_per_page' => 1,
+        'category__in' => [$cat->cat_ID],
+    ]);
+}
+
+
+function get_latest_posts_by_slug($slug)
+{
+    $cat = get_category_by_slug($slug);
+    return new WP_Query([
+        'posts_per_page'   => 3,
+        'category__in' => [$cat->cat_ID],
+        'orderby'          => 'post_date',
+        'order'            => 'DESC',
+        'post_type'        => 'post',
+        'post_status'      => 'publish',
+        'suppress_filters' => false
+     ]);
+}
+
+
+/*
+$post_id = 26;
+$queried_post = get_post($post_id);
+$title = $queried_post->post_title;
+
+echo $queried_post->post_content;
+$content = apply_filters('the_content',$queried_post->post_content;);
+echo $content;
+*/
+
+
+// $post_id = '26';
+// $post_url = get_permalink($post_id);
+
+
+// $page = get_page_by_title( 'About' );
+// wp_list_pages( 'exclude=' . $page->ID );
+
