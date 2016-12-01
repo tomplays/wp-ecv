@@ -53,5 +53,25 @@ function register_my_menus() {
 }
 */
 
+/*
+
+// https://codex.wordpress.org/Function_Reference/register_post_type
+add_action( 'init', 'create_posttype' );
+function create_posttype() {
+  register_post_type( 'projets',
+    array(
+      'labels' => array(
+        'name' => __( 'Projets' ),
+        'singular_name' => __( 'Projet' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'rewrite' => array('slug' => 'projet'),
+    )
+  );
+}
+
+
+*/
 
 ?>
